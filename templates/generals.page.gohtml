@@ -1,0 +1,73 @@
+{{template "base" .}}
+{{define "content"}}
+
+<div class="container">
+    <div class="row">
+    <div class="col">
+        <img
+        src="./static/images/generals-quarters.png"
+        class="img-fluid img-thumbnail mx-auto d-block room-image"
+        alt="room image"
+        />
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col">
+        <h1 class="text-center mt-4">General's Quarters</h1>
+        <p>
+        Your home away form home, set on the majestic waters of the Atlantic
+        Ocean, this will be a vacation to remember. Your home away form
+        home, set on the majestic waters of the Atlantic Ocean, this will be
+        a vacation to remember. Your home away form home, set on the
+        majestic waters of the Atlantic Ocean, this will be a vacation to
+        remember. Your home away form home, set on the majestic waters of
+        the Atlantic Ocean, this will be a vacation to remember. Your home
+        away form home, set on the majestic waters of the Atlantic Ocean,
+        this will be a vacation to remember. Your home away form home, set
+        on the majestic waters of the Atlantic Ocean, this will be a
+        vacation to remember.
+        </p>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col text-center">
+        <a id="check-availability-button" href="#!" class="btn btn-success"
+        >Chack Acailability</a
+        >
+    </div>
+    </div>
+</div>
+
+{{end}}
+
+
+{{ define "js"}}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let attention = Prompt();
+    const b = document.getElementById("check-availability-button");
+        b.addEventListener(
+        "click",
+        function () {
+            let html = `
+            <form id="chack-availability-form" action="" method="post" novalidation class="needs-validation" autocomplete="off">
+                <div class="form-row" id="reservation-dates-modal">
+                <div class="col">
+                    <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival" />
+                </div>
+                <div class="col">
+                    <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure" />
+                </div>
+                </div>
+            </form>
+            `;
+            attention.custom({ msg: html, title: "Choose your dates" });
+        },
+        false
+        );
+</script>
+{{end}}
