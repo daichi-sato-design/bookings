@@ -18,7 +18,7 @@ var functions = template.FuncMap{
 
 var app *config.AppConfig
 
-// NewTemplates sets the config for template package
+// NewTemplates はテンプレートパッケージの構成を設定
 func NewTemplates(a *config.AppConfig){
 	app = a
 }
@@ -28,12 +28,12 @@ func AddDefaultData(td *models.TemplateData) *models.TemplateData{
 	return td
 }
 
-// RenderTemplate renders template using html/template
+// RenderTemplate は、html/templateを使用してテンプレートをレンダリングする
 func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData){
 	var tc map[string]*template.Template
 
 	if app.UseCache {
-		// get the template cache from the app config
+		// アプリの構成からテンプレートキャッシュを取得します
 		tc = app.TemplateCache
 	}else{
 		tc, _ = CreateTemplateCache()
@@ -55,8 +55,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	}
 }
 
-// CreateTemplateCache creates a template cache as a map
-func CreateTemplateCache() (map[string]*template.Template,error){
+// CreateTemplateCache は、テンプレートキャッシュをマップとして作成する
+func CreateTemplateCache() (map[string]*template.Template, error){
 	myCache := map[string]*template.Template{}
 
 	pages, err := filepath.Glob("./templates/*.html")

@@ -6,7 +6,7 @@ import (
 	"github.com/justinas/nosurf"
 )
 
-// NoSurf adds CSRF protection to all POST requests
+// NoSurf はすべてのPOSTリクエストにCSRF保護を追加
 func NoSurf(next http.Handler) http.Handler{
 	csrfHandler := nosurf.New(next)
 
@@ -20,7 +20,7 @@ func NoSurf(next http.Handler) http.Handler{
 	return csrfHandler
 }
 
-// SessionLoad loads and saves the session on every request
+// SessionLoad は、リクエストごとにセッションをロードして保存
 func SessionLoad(next http.Handler) http.Handler{
 	return session.LoadAndSave(next)
 }

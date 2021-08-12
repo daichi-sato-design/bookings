@@ -1,6 +1,6 @@
 package models
 
-// TemplateData holds data sent from handlers to templates
+// TemplateData は、ハンドラーからテンプレートに送信されるデータを保持する
 type TemplateData struct{
 	StringMap	map[string]string
 	IntMap		map[string]int

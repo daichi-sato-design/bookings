@@ -12,7 +12,7 @@ import (
 func routes(app *config.AppConfig) http.Handler{
 	mux := chi.NewRouter()
 
-	// A good base middleware stack
+	// 優れたベースミドルウェアスタック
 	mux.Use(middleware.Recoverer)
 	mux.Use(NoSurf)
 	mux.Use(SessionLoad)

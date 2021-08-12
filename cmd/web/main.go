@@ -20,9 +20,9 @@ const (
 var app config.AppConfig
 var session *scs.SessionManager
 
-// main is the main application function
+// main はメインアプリケーション機能
 func main(){
-	// change this to true when in production
+	// 本番環境ではこれをtrueに変更
 	app.InProduction = false
 
 	session = scs.New()
