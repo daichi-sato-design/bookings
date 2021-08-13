@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	portNumber = ":8080"
+	portNumber = ":4000"
 )
 
 var app config.AppConfig
