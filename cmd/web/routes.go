@@ -3,10 +3,11 @@ package main
 import (
 	"net/http"
 
-	"github.com/daichi-sato-design/bookings/pkg/config"
-	"github.com/daichi-sato-design/bookings/pkg/handlers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+
+	"github.com/daichi-sato-design/bookings/pkg/config"
+	"github.com/daichi-sato-design/bookings/pkg/handlers"
 )
 
 func routes(app *config.AppConfig) http.Handler{
