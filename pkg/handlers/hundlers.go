@@ -33,7 +33,7 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request){
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
-	render.RenderTemplate(w, "home.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "home.page.html", &models.TemplateData{})
 }
 
 // About はaboutページハンドラー
@@ -46,7 +46,7 @@ func  (m *Repository)  About(w http.ResponseWriter, r *http.Request){
 	stringMap["remote_ip"] = remoteIP
 
 	// テンプレートにデータを送信
-	render.RenderTemplate(w, "about.page.html", &models.TemplateData{
+	render.RenderTemplate(w, r, "about.page.html", &models.TemplateData{
 		StringMap: stringMap,
 	})
 }
@@ -54,25 +54,30 @@ func  (m *Repository)  About(w http.ResponseWriter, r *http.Request){
 
 // Reservation 予約の作成ページと表示フォームを表示
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request){
-	render.RenderTemplate(w, "make-reservation.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "make-reservation.page.html", &models.TemplateData{})
 }
 
 // Generals 部屋のページをレンダリング
 func  (m *Repository) Generals(w http.ResponseWriter, r *http.Request){
-	render.RenderTemplate(w, "generals.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "generals.page.html", &models.TemplateData{})
 }
 
 // Majors 部屋のページをレンダリング
 func  (m *Repository) Majors(w http.ResponseWriter, r *http.Request){
-	render.RenderTemplate(w, "majors.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "majors.page.html", &models.TemplateData{})
 }
 
 // Availability 検索の作成-可用性ページを表示
 func  (m *Repository) Availability(w http.ResponseWriter, r *http.Request){
-	render.RenderTemplate(w, "search-avaliability.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "search-avaliability.page.html", &models.TemplateData{})
+}
+
+// PostAvailability 検索の作成-可用性ページを表示
+func  (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Posted to search acailability"))
 }
 
 // Contact コンタクトページをレンダリングします
 func  (m *Repository) Contact(w http.ResponseWriter, r *http.Request){
-	render.RenderTemplate(w, "contact.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "contact.page.html", &models.TemplateData{})
 }
