@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/daichi-sato-design/bookings/pkg/config"
@@ -11,19 +12,19 @@ import (
 // Repo ハンドラーが使用するリポジトリー
 var Repo *Repository
 
-// Repository はリポジトリタイプです
+// Repository はリポジトリタイプ
 type Repository struct{
 	App *config.AppConfig
 }
 
-// NewRepo は新しいリポジトリを作成します
+// NewRepo は新しいリポジトリを作成
 func NewRepo(a *config.AppConfig) *Repository{
 	return &Repository{
 		App: a,
 	}
 }
 
-// NewHandlers はハンドラーのリポジトリーを設定します
+// NewHandlers はハンドラーのリポジトリーを設定
 func NewHandlers(r *Repository){
 	Repo = r
 }
@@ -74,7 +75,9 @@ func  (m *Repository) Availability(w http.ResponseWriter, r *http.Request){
 
 // PostAvailability 検索の作成-可用性ページを表示
 func  (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Posted to search acailability"))
+	start := r.Form.Get("start")
+	end := r.Form.Get("end")
+	w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s", start, end)))
 }
 
 // Contact コンタクトページをレンダリングします
